@@ -21,6 +21,15 @@
       box-sizing: border-box;
       font-family: 'Inter', sans-serif;
     }
+    a:link {
+      color: white;
+      text-decoration: none;
+    }
+    a:visited {
+      color: white;
+      text-decoration: none;
+    }
+
 
     body {
       background-color: var(--clr-dark);
@@ -28,11 +37,45 @@
       line-height: 1.6;
     }
 
+    .profile-pic {
+      position: absolute;
+      left: 2.5rem;
+      top: 50%;
+      transform: translateY(-50%);
+      width: 130px;
+      height: 130px;
+      border-radius: 50%;
+      overflow: hidden;
+      border: 2px solid var(--clr-light);
+      box-shadow: 0 0 8px var(--clr-dark);
+      transition: transform 0.3s ease;
+    }
+
+    .profile-pic:hover {
+      transform: translateY(-50%) scale(1.2);
+    }
+
+    .profile-pic img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: opacity 0.3s ease;
+    }
+
+    .profile-pic:hover img {
+      content: url("images/pfp-irl.jpg") /* <-- Second picture shown on hover */
+    }
+
+
     header {
       background-color: var(--clr-deep);
       color: var(--clr-light);
       padding: 2rem;
       text-align: center;
+      position: relative; /* Needed for absolute positioning inside */
+      justify-content: center;
+      align-items: center;
+      /* display:flex; */
     }
 
     nav {
@@ -244,6 +287,10 @@
 
 <body>
   <header>
+    <div class="profile-pic">
+      <img src="images/pfp.jpg" alt="Profile Picture" />
+    </div>
+
     <h1>Jashvin Pandoo</h1>
     <p>Final Year Computer Science Student | Aspiring Software Engineer</p>
     <nav>
@@ -260,10 +307,21 @@
   <section id="about" class="about">
     <h2>About Me</h2>
     <p>
-      I'm a passionate computer science student with a love for problem-solving,
+      <!-- I'm a passionate computer science student with a love for problem-solving,
       building applications, and continuous learning and self improvement. I'm currently finishing my
-      degree at UKZN and working on various coding, robotics, and creative projects.
+      degree at UKZN and working on various coding, robotics, and creative projects. -->
+      I'm a passionate Computer Science student with a background in Computer Engineering, currently completing my degree at UKZN. 
+      I love solving problems, building meaningful (and sometimes just fun) projects, and constantly learning new skills. 
+      With experience in both low-level systems and high-level design, I've worked on everything from microcontroller robots to AI-powered assistants and my own Android app.
     </p>
+    <br>
+    <p>
+      I thrive in positive, collaborative environments and have recently been trying to take the lead more often when coordinating teams. Whether it's building trivia games, 
+      automating timetables, or hacking together hardware projects, I enjoy bringing ideas to life with clean code and thoughtful design. 
+      I believe having a well-rounded life sharpens creative problem-solving — doing a variety of things outside university work has helped 
+      me approach challenges with broader perspectives and more adaptable thinking.
+
+  </p>
   </section>
 
   <section id="skills" class="skills-section">
@@ -301,8 +359,10 @@
           <h3>UKZN Timetable App</h3>
           <button onclick="toggleDescription(this)">Show More</button>
           <p class="project-description">
-            A web-based timetable planner built for UKZN students to easily view and manage
-            their weekly schedules. Built using HTML, CSS, and JavaScript.
+            An Android application designed to automatically generate university schedules. 
+            A personal project developed using Java and Android Studio, the app solves a real pain point for UKZN students (including myself) - 
+            eliminating the need to manually build semester timetables. Focused on intuitive UX and smooth UI, 
+            it's currently in the process of being published to the Google Play Store.
           </p>
         </div>
       </div>
@@ -313,8 +373,12 @@
           <h3>Escape the Cinema</h3>
           <button onclick="toggleDescription(this)">Show More</button>
           <p class="project-description">
-            A C++ & Qt-based game with trivia and branching storylines. The player navigates
-            movie-themed levels to escape from Ghostface.
+          A narrative-driven trivia game created in C++ and Qt for the COMP315 Advanced Programming module. 
+          I led a team of 7 from concept to completion, acting as project manager and technical architect. 
+          I established workflows, assigned tasks, created timelines, and facilitated communication using Agile principles. 
+          I also designed the modular controller architecture, implemented core game logic including lives, randomized questions, 
+          and level progression, and contributed to the GUI. Our structured approach and execution led to our game receiving the 
+          highest project score in the class.
           </p>
         </div>
       </div>
@@ -325,8 +389,10 @@
           <h3>My Fitness GPT</h3>
           <button onclick="toggleDescription(this)">Show More</button>
           <p class="project-description">
-            A 2D top-down beyblade-inspired game using Python and Pygame. Features spinning tops
-            and customizable skins with simple battle mechanics.
+          A personalized AI fitness and nutrition assistant powered by PrivateGPT. 
+          The system ingests user data and provides tailored advice, all running locally for privacy. 
+          Developed a landing page and questionnaire system to generate user-specific profiles and health PDFs. 
+          A full-stack fusion of AI, design, and personal passion.
           </p>
         </div>
       </div>
@@ -337,8 +403,9 @@
           <h3>Line following Microcontroller-based Autonomous Robotic Vehicle</h3>
           <button onclick="toggleDescription(this)">Show More</button>
           <p class="project-description">
-            A 2D top-down beyblade-inspired game using Python and Pygame. Features spinning tops
-            and customizable skins with simple battle mechanics.
+          A microcontroller-based autonomous line-following vehicle developed in assembly for the EMK310 Microprocessors course. 
+          The robot was developed by a team of 4 using assembly on a PIC18. Programmed to navigate a course of colored lines using 
+          a custom-built analog colour sensor.
           </p>
         </div>
       </div>
@@ -349,20 +416,23 @@
           <h3>Digital Cluedo Game</h3>
           <button onclick="toggleDescription(this)">Show More</button>
           <p class="project-description">
-            A 2D top-down beyblade-inspired game using Python and Pygame. Features spinning tops
-            and customizable skins with simple battle mechanics.
+          A local network multiplayer digital board game based on Cluedo, with optional AI opponents built using C++ and Qt 
+          as part of the EPE321 module. Developed as part of a 6-person team using Agile methodology, GitKraken, and Jira. 
+          I handled GUI design and core logic while contributing to collaborative code and planning.
           </p>
         </div>
       </div>
 
       <div class="project-card">
-        <img src="https://via.placeholder.com/400x200" alt="Project 6" />
+        <img src="images/Coffee.png" alt="Project 6" />
         <div class="content">
           <h3>Coffee Shop Chatbot</h3>
           <button onclick="toggleDescription(this)">Show More</button>
           <p class="project-description">
-            A 2D top-down beyblade-inspired game using Python and Pygame. Features spinning tops
-            and customizable skins with simple battle mechanics.
+          A rule-based chatbot developed in Python using NLP techniques for order-taking, 
+          availability checking, and price queries. Built as a team of 4 for the COMP316 NLP module, 
+          with a focus on usability and intent recognition. It uses regex, fuzzy matching, 
+          and a CSV backend to understand user inputs. 
           </p>
         </div>
       </div>
@@ -373,9 +443,10 @@
           <h3>Kettle Clicker</h3>
           <button onclick="toggleDescription(this)">Show More</button>
           <p class="project-description">
-            A 2D top-down beyblade-inspired game using Python and Pygame. Features spinning tops
-            and customizable skins with simple battle mechanics.
-          </p>
+          An IoT project that controls a kettle using an ESP32 microcontroller and a servo motor, 
+          integrated with the Blynk app. Features include real-time control through Wi-Fi, scheduled automation, and PWM programming in Arduino C++. 
+          A quirky, personal project born from caffeine dependency and a desire to get out of bed earlier.
+        </p>
         </div>
       </div>
 
@@ -385,8 +456,9 @@
           <h3>Capacitive Touch Coke Can Piano</h3>
           <button onclick="toggleDescription(this)">Show More</button>
           <p class="project-description">
-            A 2D top-down beyblade-inspired game using Python and Pygame. Features spinning tops
-            and customizable skins with simple battle mechanics.
+          A fun electronics project using aluminum cans as capacitive touch sensors connected to an Arduino. 
+          Touching each can played a different tone through a buzzer and lights up a coresponding LED. Simple, interactive, and 
+          built to explore touch sensitivity circuits and sound synthesis.
           </p>
         </div>
       </div>
@@ -399,7 +471,7 @@
     <ul>
       <li>Founder and Head of Tuks Anime Society (2023) - Largest Society at the University of Pretoria with near 700 members</li>
       <li>Completed my first full 42.2Km Marathon (2025)</li>
-      <li>Leetcode streak of 100+ Days</li>
+      <li>200+ Leetcode Submissions</li>
       <li>Head of of High School Newspaper</li>
     </ul>
   </section>
@@ -407,7 +479,10 @@
   <section id="hobbies" class="hobbies">
     <h2>Hobbies & Interests</h2>
     <p>
-      Outside of university, I enjoy hiking, gym, crocheting, longboarding, cooking, reading, robotics, and creating short films. I believe a well-rounded life helps fuel creativity and resilience.
+      <!-- Outside of university, I enjoy hiking, gym, crocheting, longboarding, cooking, reading, robotics, and creating short films. I believe a well-rounded life helps fuel creativity and resilience. -->
+          Outside of university, I’m someone who stays active and creative. I enjoy hiking, gym, crocheting, longboarding, cooking and reading. I’ve also dabbled in making short films, and I love robotics and 
+          tech side-projects that mix creativity with engineering. I believe that these passions not only keep life exciting but also fuel 
+          my innovation and resilience in tech and problem solving.
     </p>
   </section>
 
@@ -492,9 +567,10 @@
 
   <section id="contact" class="contact">
     <h2>Contact</h2>
-    <p>Email: jashvin.pandoo@example.com</p>
-    <p>LinkedIn: linkedin.com/in/jashvinpandoo</p>
-    <p>GitHub: github.com/jashvinp</p>
+    <p>Email: jashpandoo@example.com</p>
+    <p> LinkedIn: <a href="https://www.linkedin.com/in/jashpandoo/">linkedin.com/in/jashpandoo/</a> </p>
+    <p> GitHub: <a href="https://github.com/JashPandoo">github.com/u/jashpandoo</a> </p>
+    <p> Leetcode: <a href="https://leetcode.com/u/jashpandoo/">leetcode.com/u/jashpandoo</a> </p>
   </section>
 
   <footer>
