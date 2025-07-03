@@ -1,0 +1,514 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>My Portfolio</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+  <style>
+    :root {
+      --clr-dark: #1e1a2e;
+      --clr-deep: #2b2444;
+      --clr-accent: #a259ff;
+      --clr-light: #f5f5f5;
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: 'Inter', sans-serif;
+    }
+
+    body {
+      background-color: var(--clr-dark);
+      color: var(--clr-light);
+      line-height: 1.6;
+    }
+
+    header {
+      background-color: var(--clr-deep);
+      color: var(--clr-light);
+      padding: 2rem;
+      text-align: center;
+    }
+
+    nav {
+      margin-top: 1rem;
+    }
+
+    nav a {
+      color: var(--clr-light);
+      margin: 0 1rem;
+      text-decoration: none;
+      font-weight: bold;
+      transition: color 0.3s ease;
+    }
+
+    nav a:hover {
+      color: var(--clr-accent);
+    }
+
+    section {
+      padding: 3rem 2rem;
+      max-width: 1000px;
+      margin: auto;
+    }
+
+    h2 {
+      color: var(--clr-accent);
+      margin-bottom: 1rem;
+    }
+
+    .about, .contact, .achievements, .hobbies {
+      background-color: var(--clr-deep);
+      padding: 2rem;
+      margin-top: 1rem;
+      margin-bottom: 1rem;
+      border-radius: 10px;
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+    }
+
+    .about{
+      margin-top: 2rem;
+    }
+
+    .projects {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 2rem;
+    }
+
+    .project-card {
+      background: var(--clr-deep);
+      border-radius: 10px;
+      overflow: hidden;
+      box-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
+    }
+
+    .project-card img {
+      width: 100%;
+      height: 249px;
+      object-fit: cover;
+    }
+
+    .project-card .content {
+      padding: 1rem;
+    }
+
+    .project-card button {
+      background-color: var(--clr-accent);
+      color: white;
+      border: none;
+      padding: 0.5rem 1rem;
+      margin-top: 1rem;
+      cursor: pointer;
+      border-radius: 5px;
+    }
+
+    .project-description {
+      display: none;
+      margin-top: 1rem;
+      color: #ddd;
+    }
+
+    footer {
+      text-align: center;
+      padding: 2rem;
+      background-color: var(--clr-deep);
+      color: var(--clr-light);
+    }
+
+    .skills-section {
+      background: var(--clr-dark);
+      text-align: center;
+      padding: 1rem 2rem;
+    }
+
+    .section-header {
+      font-size: 3rem;
+      margin-bottom: 2rem;
+      padding-bottom: 1rem;
+      display: inline-block;
+      border-bottom: 0.2rem solid var(--clr-light);
+    }
+
+    .skills-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+      gap: 2rem;
+      max-width: 1000px;
+      margin: 0 auto;
+    }
+
+    .skill-card {
+      background-color: var(--clr-deep);
+      padding: 1rem;
+      border-radius: 10px;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+      transition: background-color 0.3s ease, transform 0.3s ease-in-out;
+    }
+
+    .skill-card:hover {
+      background-color: var(--clr-accent);
+      transform: scale(1.05);
+    }
+
+    .skill-card:hover i,
+    .skill-card:hover h3 {
+      color: var(--clr-dark);
+      transition: color 0.3s ease;
+    }
+
+
+    .skill-card i {
+      font-size: 2rem;
+      margin-bottom: 0.5rem;
+      color: var(--clr-accent);
+      transition: color 0.3s ease;
+    }
+
+    .skill-card h3 {
+      font-size: 1rem;
+      font-weight: 400;
+      transition: color 0.3s ease;
+    }
+
+    button {
+      background-color: var(--clr-deep);
+      color: var(--clr-light);
+      padding: 0.5rem 1rem;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+      transition: background-color 0.3s ease;
+    }
+
+    button:hover {
+      background-color: var(--clr-accent);
+      color: #000;
+    }
+
+
+    .education-grid, .cert-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 2rem;
+    margin-top: 2rem;
+  }
+
+  .edu-card, .cert-card {
+    background-color: var(--clr-deep);
+    padding: 1.5rem;
+    border-radius: 10px;
+    box-shadow: 0 0 12px rgba(0, 0, 0, 0.25);
+  }
+
+  .edu-card h3, .cert-card h4 {
+    color: var(--clr-accent);
+    margin-bottom: 0.8rem;
+  }
+
+  .cert-card ul {
+    padding-left: 1.2rem;
+    list-style: disc;
+    color: var(--clr-light);
+  }
+
+  .coursework-grid {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  margin-top: 0rem;
+}
+
+.course-chip {
+  background-color: var(--clr-deepest);
+  padding: 0.3rem 0.6rem;
+  border-radius: 5px;
+  font-size: 0.85rem;
+  color: var(--clr-light);
+  box-shadow: 0 1px 3px rgba(0,0,0,0.2);
+  white-space: nowrap;
+  transition: background-color 0.3s ease;
+}
+
+.course-chip:hover {
+  background-color: var(--clr-accent);
+  color: #000;
+}
+  </style>
+</head>
+
+<body>
+  <header>
+    <h1>Jashvin Pandoo</h1>
+    <p>Final Year Computer Science Student | Aspiring Software Engineer</p>
+    <nav>
+      <a href="#about">About</a>
+      <a href="#skills">Skills</a>
+      <a href="#projects">Projects</a>
+      <a href="#achievements">Achievements</a>
+      <a href="#hobbies">Hobbies</a>
+      <a href="#education">Education</a>
+      <a href="#contact">Contact</a>
+    </nav>
+  </header>
+
+  <section id="about" class="about">
+    <h2>About Me</h2>
+    <p>
+      I'm a passionate computer science student with a love for problem-solving,
+      building applications, and continuous learning and self improvement. I'm currently finishing my
+      degree at UKZN and working on various coding, robotics, and creative projects.
+    </p>
+  </section>
+
+  <section id="skills" class="skills-section">
+    <h2 class="section-header">My Toolbox</h2>
+    <div class="skills-grid">
+      <div class="skill-card"><i class="fab fa-python"></i><h3>Python</h3></div>
+      <div class="skill-card"><i class="fab fa-java"></i><h3>Java</h3></div>
+      <div class="skill-card"><i class="fas fa-code"></i><h3>C++</h3></div>
+      <div class="skill-card"><i class="fab fa-html5"></i><h3>HTML</h3></div>
+      <div class="skill-card"><i class="fab fa-css3-alt"></i><h3>CSS</h3></div>
+      <div class="skill-card"><i class="fa-solid fa-database"></i><h3>MySQL</h3></div>
+      <div class="skill-card"><i class="fa-solid fa-robot"></i><h3>Micro-Controllers</h3></div>
+      <div class="skill-card"><i class="fa-solid fa-bolt"></i></i><h3>Discrete Circuits</h3></div>
+      <div class="skill-card"><i class="fas fa-microchip"></i><h3>Assembly</h3></div>
+      <div class="skill-card"><i class="fab fa-android"></i><h3>Android Studio</h3></div>
+      <div class="skill-card"><i class="fas fa-code"></i><h3>XML</h3></div>
+      <div class="skill-card"><i class="fa-solid fa-pen"></i><h3>LaTeX</h3></div>
+      <div class="skill-card"><i class="fab fa-git-alt"></i><h3>GIT</h3></div>
+      <div class="skill-card"><i class="fas fa-square-root-alt"></i><h3>MATLAB</h3></div>
+      <div class="skill-card"><i class="fas fa-project-diagram"></i><h3>VHDL</h3></div>
+      <div class="skill-card"><i class="fa-regular fa-file-word"></i><h3>Microsoft Word</h3></div>
+      <div class="skill-card"><i class="fa-regular fa-file-excel"></i><h3>Microsoft Excel</h3></div>
+      <div class="skill-card"><i class="fa-regular fa-file-powerpoint"></i></i><h3>Microsoft PowerPoint</h3></div>
+      <div class="skill-card"><i class="fa-solid fa-image"></i><h3>Adobe Photoshop</h3></div>
+      <div class="skill-card"><i class="fa-solid fa-cube"></i><h3>3D Printing Design</h3></div>
+    </div>
+  </section>
+
+  <section id="projects">
+    <h2>Projects</h2>
+    <div class="projects">
+      <div class="project-card">
+        <img src="images/UKZN Timetable.jpg" alt="Project 1" />
+        <div class="content">
+          <h3>UKZN Timetable App</h3>
+          <button onclick="toggleDescription(this)">Show More</button>
+          <p class="project-description">
+            A web-based timetable planner built for UKZN students to easily view and manage
+            their weekly schedules. Built using HTML, CSS, and JavaScript.
+          </p>
+        </div>
+      </div>
+
+      <div class="project-card">
+        <img src="images/Escape the cinema.png" alt="Project 2" />
+        <div class="content">
+          <h3>Escape the Cinema</h3>
+          <button onclick="toggleDescription(this)">Show More</button>
+          <p class="project-description">
+            A C++ & Qt-based game with trivia and branching storylines. The player navigates
+            movie-themed levels to escape from Ghostface.
+          </p>
+        </div>
+      </div>
+
+      <div class="project-card">
+        <img src="images/My Fitness GPT.png" alt="Project 3" />
+        <div class="content">
+          <h3>My Fitness GPT</h3>
+          <button onclick="toggleDescription(this)">Show More</button>
+          <p class="project-description">
+            A 2D top-down beyblade-inspired game using Python and Pygame. Features spinning tops
+            and customizable skins with simple battle mechanics.
+          </p>
+        </div>
+      </div>
+
+      <div class="project-card">
+        <img src="images/MARV.jpg" alt="Project 4" />
+        <div class="content">
+          <h3>Line following Microcontroller-based Autonomous Robotic Vehicle</h3>
+          <button onclick="toggleDescription(this)">Show More</button>
+          <p class="project-description">
+            A 2D top-down beyblade-inspired game using Python and Pygame. Features spinning tops
+            and customizable skins with simple battle mechanics.
+          </p>
+        </div>
+      </div>
+
+      <div class="project-card">
+        <img src="images/Cluedo.png" alt="Project 5" />
+        <div class="content">
+          <h3>Digital Cluedo Game</h3>
+          <button onclick="toggleDescription(this)">Show More</button>
+          <p class="project-description">
+            A 2D top-down beyblade-inspired game using Python and Pygame. Features spinning tops
+            and customizable skins with simple battle mechanics.
+          </p>
+        </div>
+      </div>
+
+      <div class="project-card">
+        <img src="https://via.placeholder.com/400x200" alt="Project 6" />
+        <div class="content">
+          <h3>Coffee Shop Chatbot</h3>
+          <button onclick="toggleDescription(this)">Show More</button>
+          <p class="project-description">
+            A 2D top-down beyblade-inspired game using Python and Pygame. Features spinning tops
+            and customizable skins with simple battle mechanics.
+          </p>
+        </div>
+      </div>
+
+      <div class="project-card">
+        <img src="https://via.placeholder.com/400x200" alt="Project 7" />
+        <div class="content">
+          <h3>Kettle Clicker</h3>
+          <button onclick="toggleDescription(this)">Show More</button>
+          <p class="project-description">
+            A 2D top-down beyblade-inspired game using Python and Pygame. Features spinning tops
+            and customizable skins with simple battle mechanics.
+          </p>
+        </div>
+      </div>
+
+      <div class="project-card">
+        <img src="https://via.placeholder.com/400x200" alt="Project 8" />
+        <div class="content">
+          <h3>Capacitive Touch Coke Can Piano</h3>
+          <button onclick="toggleDescription(this)">Show More</button>
+          <p class="project-description">
+            A 2D top-down beyblade-inspired game using Python and Pygame. Features spinning tops
+            and customizable skins with simple battle mechanics.
+          </p>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <section id="achievements" class="achievements">
+    <h2>Achievements</h2>
+    <ul>
+      <li>Founder and Head of Tuks Anime Society (2023) - Largest Society at the University of Pretoria with near 700 members</li>
+      <li>Completed my first full 42.2Km Marathon (2025)</li>
+      <li>Leetcode streak of 100+ Days</li>
+      <li>Head of of High School Newspaper</li>
+    </ul>
+  </section>
+
+  <section id="hobbies" class="hobbies">
+    <h2>Hobbies & Interests</h2>
+    <p>
+      Outside of university, I enjoy hiking, gym, crocheting, longboarding, cooking, reading, robotics, and creating short films. I believe a well-rounded life helps fuel creativity and resilience.
+    </p>
+  </section>
+
+  <section id="education" class="about">
+  <h2>Academic History</h2>
+  <h3 style="margin-top: 2rem;">University</h3>
+  <div class="education-grid">
+    <div class="edu-card">
+      <h3>University of Pretoria</h3>
+      <p><strong>Location:</strong> Pretoria, SA</p>
+      <p><strong>Duration:</strong> Jan 2020 – Dec 2023</p>
+      <p><strong>Degree:</strong> BEng Computer Engineering</p>
+      <div class="coursework-grid">
+        <p><strong>Coursework:</strong></p>
+        <div class="course-chip">Program Design</div>
+        <div class="course-chip">Software Engineering</div>
+        <div class="course-chip">Object Oriented Programming</div>
+        <div class="course-chip">Digital systems</div>
+        <div class="course-chip">Data Structures and Algorithms</div>
+        <div class="course-chip">Artificial Intelligence</div>
+        <div class="course-chip">Digital Communication</div>
+        <div class="course-chip">Linear systems</div>
+        <div class="course-chip">Material Science</div>
+        <div class="course-chip">Electrical Engineering</div>
+        <div class="course-chip">Computer Simulations</div>
+        <div class="course-chip">Engineering Management</div>
+        <div class="course-chip">Professional and Technical Communication</div>
+      </div>
+    </div>
+    <div class="edu-card">
+      <h3>University of KwaZulu-Natal</h3>
+      <p><strong>Location:</strong> Pietermaritzburg, SA</p>
+      <p><strong>Duration:</strong> Jan 2024 – Dec 2025</p>
+      <p><strong>Degree:</strong> BSc Computer Science & IT</p>
+      <div class="coursework-grid">
+        <p><strong>Coursework:</strong></p>
+        <div class="course-chip">Cryptography</div>
+        <div class="course-chip">Computer Architecture</div>
+        <div class="course-chip">Software Design</div>
+        <div class="course-chip">Natural Language Processing</div>
+        <div class="course-chip">Database Systems</div>
+        <div class="course-chip">Operating Systems</div>
+      </div>
+    </div>
+  </div>
+
+  <h3 style="margin-top: 2rem;">Certificates</h3>
+  <div class="cert-grid">
+    <div class="cert-card">
+      <h4>CISCO (Dec 2020 – Mar 2023)</h4>
+      <ul>
+        <li>CCNA R&S: Introduction to Networks</li>
+        <li>CCNA R&S: Routing and Switching Essentials</li>
+        <li>CCNAv7: Switching, Routing, and Wireless Essentials</li>
+        <li>CCNAv7: Enterprise Networking, Security, and Automation</li>
+        <li>CCNP R&S ROUTE: Implementing IP Routing</li>
+      </ul>
+    </div>
+    <div class="cert-card">
+      <h4>MathWorks (Aug 2023)</h4>
+      <ul>
+        <li>MATLAB Onramp</li>
+        <li>Simulink Onramp</li>
+      </ul>
+    </div>
+    <div class="cert-card">
+      <h4>IBM SkillsBuild (Jul 2024)</h4>
+      <ul>
+        <li>Cybersecurity Fundamentals</li>
+        <li>AI Fundamentals</li>
+      </ul>
+    </div>
+    <div class="cert-card">
+      <h4>FreeCodeCamp (Apr 2025)</h4>
+      <ul>
+        <li>Responsive Web Design</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+
+  <section id="contact" class="contact">
+    <h2>Contact</h2>
+    <p>Email: jashvin.pandoo@example.com</p>
+    <p>LinkedIn: linkedin.com/in/jashvinpandoo</p>
+    <p>GitHub: github.com/jashvinp</p>
+  </section>
+
+  <footer>
+    <p>&copy; 2025 Jashvin Pandoo. All rights reserved.</p>
+  </footer>
+
+  <script>
+    function toggleDescription(button) {
+      const description = button.nextElementSibling;
+      const isVisible = description.style.display === 'block';
+      description.style.display = isVisible ? 'none' : 'block';
+      button.textContent = isVisible ? 'Show More' : 'Show Less';
+    }
+  </script>
+</body>
+
+</html>
