@@ -287,13 +287,34 @@
   background-color: var(--clr-accent);
   color: #000;
 }
+.profile-wrapper {
+  position: relative;
+}
+
+/* Desktop styles stay the same, but we override for mobile below */
+@media (max-width: 768px) {
+  .profile-pic {
+    position: static;
+    transform: none;
+    margin: 0 auto 1rem auto;
+    display: block;
+  }
+
+  .profile-wrapper {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 1rem;
+  }
+}
   </style>
 </head>
 
 <body>
   <header>
-    <div class="profile-pic">
-      <img src="images/pfp.jpg" alt="Profile Picture" />
+    <div class="profile-wrapper"></div>
+      <div class="profile-pic">
+        <img src="images/pfp.jpg" alt="Profile Picture" />
+      </div>
     </div>
 
     <h1>Jashvin Pandoo</h1>
