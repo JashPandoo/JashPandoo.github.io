@@ -314,25 +314,28 @@
     position: absolute !important;
     width: 80px;
     height: 80px;
-    z-index: 10;
+    z-index: 10 !important;
   }
 
-  .sticker-1  { top: calc(100% - 240px); left: 10px; }
-  .sticker-2  { top: calc(100% - 200px); left: 10px; }
-  .sticker-3  { top: calc(100% - 240px); right: 10px; }
-  .sticker-4  { top: calc(100% - 200px); right: 10px; }
-  .sticker-5  { top: calc(100% - 160px); left: 10px; }
-  .sticker-6  { top: calc(100% - 160px); right: 10px; }
-  .sticker-7  { top: calc(100% - 120px); left: 10px; }
-  .sticker-8  { top: calc(100% - 120px); right: 10px; }
-  .sticker-9  { top: calc(100% - 80px); left: 10px; }
-  .sticker-10 { top: calc(100% - 80px); right: 10px; }
-  .sticker-11 { top: calc(100% - 40px); left: 10px; }
-  .sticker-12 { top: calc(100% - 40px); right: 10px; }
-  .sticker-13 { top: calc(100% - 240px); left: 100px; }
-  .sticker-14 { top: calc(100% - 200px); left: 100px; }
-  .sticker-15 { top: calc(100% - 160px); left: 100px; }
-  .sticker-16 { top: calc(100% - 120px); left: 100px; }
+  .sticker-1  { top: unset !important; left: 10px !important; bottom: 240px; }
+  .sticker-2  { top: unset !important; left: 100px !important; bottom: 240px; }
+  .sticker-3  { top: unset !important; right: 10px !important; bottom: 240px; }
+  .sticker-4  { top: unset !important; right: 100px !important; bottom: 240px; }
+
+  .sticker-5  { top: unset !important; left: 10px !important; bottom: 160px; }
+  .sticker-6  { top: unset !important; left: 100px !important; bottom: 160px; }
+  .sticker-7  { top: unset !important; right: 10px !important; bottom: 160px; }
+  .sticker-8  { top: unset !important; right: 100px !important; bottom: 160px; }
+
+  .sticker-9  { top: unset !important; left: 10px !important; bottom: 80px; }
+  .sticker-10 { top: unset !important; left: 100px !important; bottom: 80px; }
+  .sticker-11 { top: unset !important; right: 10px !important; bottom: 80px; }
+  .sticker-12 { top: unset !important; right: 100px !important; bottom: 80px; }
+
+  .sticker-13 { top: unset !important; left: 10px !important; bottom: 0px; }
+  .sticker-14 { top: unset !important; left: 100px !important; bottom: 0px; }
+  .sticker-15 { top: unset !important; right: 10px !important; bottom: 0px; }
+  .sticker-16 { top: unset !important; right: 100px !important; bottom: 0px; }
 
   body {
     overflow-x: hidden;
