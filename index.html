@@ -310,34 +310,36 @@
     transform: scale(1.2); /* No translateY */
   }
 
-   .sticker-container {
+  .sticker-container {
     position: absolute !important;
-    width: 90px;
-    height: 90px;
+    width: 80px;
+    height: 80px;
     z-index: 10;
-  } 
-  /* Left side (stickers 1–8) */
-  .sticker-1 { top: auto !important; bottom: 260px !important; left: 20px !important; }
-  .sticker-2 { top: auto !important; bottom: 220px !important; left: 60px !important; }
-  .sticker-5 { top: auto !important; bottom: 180px !important; left: 20px !important; }
-  .sticker-6 { top: auto !important; bottom: 140px !important; left: 60px !important; }
-  .sticker-9 { top: auto !important; bottom: 100px !important; left: 20px !important; }
-  .sticker-10 { top: auto !important; bottom: 60px !important; left: 60px !important; }
-  .sticker-13 { top: auto !important; bottom: 20px !important; left: 20px !important; }
-  .sticker-14 { top: auto !important; bottom: 260px !important; left: 100px !important; }
+  }
 
-  /* Right side (stickers 3–4, 7–8, 11–12, 15–16) */
-  .sticker-3 { top: auto !important; bottom: 260px !important; right: 20px !important; }
-  .sticker-4 { top: auto !important; bottom: 220px !important; right: 60px !important; }
-  .sticker-7 { top: auto !important; bottom: 180px !important; right: 20px !important; }
-  .sticker-8 { top: auto !important; bottom: 140px !important; right: 60px !important; }
-  .sticker-11 { top: auto !important; bottom: 100px !important; right: 20px !important; }
-  .sticker-12 { top: auto !important; bottom: 60px !important; right: 60px !important; }
-  .sticker-15 { top: auto !important; bottom: 20px !important; right: 20px !important; }
-  .sticker-16 { top: auto !important; bottom: 260px !important; right: 100px !important; }
+  /* Left column */
+  .sticker-1  { bottom: 160px !important; left: 10px !important; }
+  .sticker-2  { bottom: 130px !important; left: 10px !important; }
+  .sticker-5  { bottom: 100px !important; left: 10px !important; }
+  .sticker-6  { bottom: 70px !important; left: 10px !important; }
+  .sticker-9  { bottom: 40px !important; left: 10px !important; }
+  .sticker-10 { bottom: 10px !important; left: 10px !important; }
+  .sticker-13 { bottom: 160px !important; left: 95px !important; }
+  .sticker-14 { bottom: 130px !important; left: 95px !important; }
+
+  /* Right column */
+  .sticker-3  { bottom: 160px !important; right: 10px !important; }
+  .sticker-4  { bottom: 130px !important; right: 10px !important; }
+  .sticker-7  { bottom: 100px !important; right: 10px !important; }
+  .sticker-8  { bottom: 70px !important; right: 10px !important; }
+  .sticker-11 { bottom: 40px !important; right: 10px !important; }
+  .sticker-12 { bottom: 10px !important; right: 10px !important; }
+  .sticker-15 { bottom: 100px !important; right: 95px !important; }
+  .sticker-16 { bottom: 70px !important; right: 95px !important; }
 
   body {
     overflow-x: hidden;
+    padding-bottom: 200px; /* leave room for stickers */
   }
 }
 
