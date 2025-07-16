@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -309,10 +310,58 @@
     transform: scale(1.2); /* No translateY */
   }
 }
+
+#page-wrapper {
+  position: relative;
+  z-index: 1;
+  padding-bottom: 100px;
+}
+  .sticker-container {
+      position: absolute;
+      width: 120px;
+      height: 120px;
+      z-index: 10;
+      cursor: grab;
+      /* user-select: none;
+      transition: transform 0.1s ease; */
+  }
+
+    .sticker-container img {
+      width: 100%;
+      height: 100%;
+      pointer-events: none;
+    }
+
+    .sticker-container:active {
+      cursor: grabbing;
+      /* transform: scale(1.05); */
+    }
+
+    /* Initial positions */
+    /* Left */
+    .sticker-1 { top: 200px; left: 30px; } /* strawhat*/
+    .sticker-2 { top: 400px; left: 90px; } /* psp*/
+    .sticker-5 { top: 600px; left: 30px; }/* pokeball*/
+    .sticker-6 { top: 1300px; left: 90px; } /*vscode*/
+    .sticker-9 { top: 2000px; left: 30px; } /*BMO*/
+    .sticker-10 { top: 3510px; left: 90px; } /*medal*/
+    .sticker-13 { top: 4100px; left: 30px; } /*maths*/
+    .sticker-14 { top: 5260px; left: 90px; } /*tardis*/
+  
+    /* Right */
+    .sticker-3 { top: 300px; right: 30px; }/* bolt*/
+    .sticker-4 { top: 500px; right: 90px; }/* spiderman*/
+    .sticker-7 { top: 1000px; right: 30px; }/*Arduino*/
+    .sticker-8 { top: 2200px; right: 90px; }/*LED*/
+    .sticker-11 { top: 3600px; right: 30px; }/*weights*/
+    .sticker-12 { top: 3800px; right: 90px; } /*crochet*/
+    .sticker-15 { top: 4300px; right: 30px; }/*longboard*/
+    .sticker-16 { top: 4800px; right: 90px; } /*tree*/
   </style>
 </head>
 
 <body>
+  
   <header>
     <div class="profile-wrapper"></div>
       <div class="profile-pic">
@@ -332,7 +381,7 @@
       <a href="#contact">Contact</a>
     </nav>
   </header>
-
+  <div id="page-wrapper">
   <section id="about" class="about">
     <h2>About Me</h2>
     <p>
@@ -627,7 +676,60 @@
   <footer>
     <p>&copy; 2025 Jashvin Pandoo. All rights reserved.</p>
   </footer>
+ </div>
+  <!-- Stickers on left -->
+  <div class="sticker-container sticker-1">
+    <img src="images/stickers/strawhat.png" alt="Sticker 1">
+  </div>
+  <div class="sticker-container sticker-2">
+    <img src="images/stickers/psp.png" alt="Sticker 2">
+  </div>
+  <div class="sticker-container sticker-5">
+    <img src="images/stickers/pokeball.png" alt="Sticker 5">
+  </div>
+  <div class="sticker-container sticker-6">
+    <img src="images/stickers/vscode.png" alt="Sticker 6">
+  </div>
+  <div class="sticker-container sticker-9">
+    <img src="images/stickers/bmo.png" alt="Sticker 9">
+  </div>
+  <div class="sticker-container sticker-10">
+    <img src="images/stickers/medal.png" alt="Sticker 10">
+  </div>
+  <div class="sticker-container sticker-13">
+    <img src="images/stickers/maths.png" alt="Sticker 13">
+  </div>
+  <div class="sticker-container sticker-14">
+    <img src="images/stickers/tardis.png" alt="Sticker 14">
+  </div>
 
+  <!-- Stickers on right -->
+  <div class="sticker-container sticker-3">
+    <img src="images/stickers/bolt.png" alt="Sticker 3">
+  </div>
+  <div class="sticker-container sticker-4">
+    <img src="images/stickers/spiderman.png" alt="Sticker 4">
+  </div>
+  <div class="sticker-container sticker-7">
+    <img src="images/stickers/arduino.png" alt="Sticker 7">
+  </div>
+  <div class="sticker-container sticker-8">
+    <img src="images/stickers/led.png" alt="Sticker 8">
+  </div>
+  <div class="sticker-container sticker-11">
+    <img src="images/stickers/weights.png" alt="Sticker 11">
+  </div>
+  <div class="sticker-container sticker-12">
+    <img src="images/stickers/crochet.png" alt="Sticker 12">
+  </div>
+  <div class="sticker-container sticker-15">
+    <img src="images/stickers/longboard.png" alt="Sticker 15">
+  </div>
+  <div class="sticker-container sticker-16">
+    <img src="images/stickers/tree.png" alt="Sticker 16">
+  </div>
+   
+  
   <script>
     function toggleDescription(button) {
       const description = button.nextElementSibling;
@@ -635,6 +737,55 @@
       description.style.display = isVisible ? 'none' : 'block';
       button.textContent = isVisible ? 'Show More' : 'Show Less';
     }
+
+    function makeDraggable(el) {
+      let isDragging = false;
+      let offsetX, offsetY;
+
+      el.addEventListener("mousedown", startDrag);
+      el.addEventListener("touchstart", startDrag, { passive: false });
+
+      function startDrag(e) {
+        e.preventDefault();
+        isDragging = true;
+        el.style.zIndex = 10;
+
+        const event = e.type === "touchstart" ? e.touches[0] : e;
+        const rect = el.getBoundingClientRect();
+        const scrollX = window.scrollX || window.pageXOffset;
+        const scrollY = window.scrollY || window.pageYOffset;
+        offsetX = event.pageX - (rect.left + scrollX);
+        offsetY = event.pageY - (rect.top + scrollY);
+
+        document.addEventListener("mousemove", drag);
+        document.addEventListener("mouseup", stopDrag);
+        document.addEventListener("touchmove", drag, { passive: false });
+        document.addEventListener("touchend", stopDrag);
+      }
+
+      function drag(e) {
+        if (!isDragging) return;
+
+        const event = e.type === "touchmove" ? e.touches[0] : e;
+        const x = event.pageX - offsetX;
+        const y = event.pageY - offsetY;
+
+        el.style.left = x + "px";
+        el.style.top = y + "px";
+      }
+
+      function stopDrag() {
+        isDragging = false;
+        el.style.zIndex = 5;
+
+        document.removeEventListener("mousemove", drag);
+        document.removeEventListener("mouseup", stopDrag);
+        document.removeEventListener("touchmove", drag);
+        document.removeEventListener("touchend", stopDrag);
+      }
+    }
+
+    document.querySelectorAll(".sticker-container").forEach(makeDraggable);
   </script>
 </body>
 
