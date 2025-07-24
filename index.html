@@ -292,7 +292,7 @@
   position: relative;
 }
 
-/* Desktop styles stay the same, but we override for mobile below */
+/* For mobile view - removes stickers */
 @media (max-width: 768px) {
   .profile-pic {
     position: static;
@@ -310,6 +310,60 @@
     transform: scale(1.2); /* No translateY */
   }
 
+  .sticker-container {
+    display: none !important;
+  }
+}
+
+/* For slighly smaller screens */
+@media (max-width: 1400px) {
+  /* Initial positions */
+    /* Left */
+    .sticker-1 { left: 15px !important; } /* strawhat*/
+    .sticker-2 { left: 45px !important; } /* psp*/
+    .sticker-5 { left: 15px !important; }/* pokeball*/
+    .sticker-6 { left: 45px !important; } /*vscode*/
+    .sticker-9 { left: 15px !important; } /*BMO*/
+    .sticker-10 { left: 45px !important;  } /*medal*/
+    .sticker-13 { left: 15px !important;  } /*maths*/
+    .sticker-14 { left: 45px !important;  } /*tardis*/
+  
+    /* Right */
+    .sticker-3 { right: 15px !important; }/* bolt*/
+    .sticker-4 { right: 45px !important; }/* spiderman*/
+    .sticker-7 { right: 15px !important; }/*Arduino*/
+    .sticker-8 { right: 45px !important; }/*LED*/
+    .sticker-11 { right: 15px !important; }/*weights*/
+    .sticker-12 { right: 45px !important; } /*crochet*/
+    .sticker-15 { right: 15px !important; }/*longboard*/
+    .sticker-16 { right: 45px !important; } /*tree*/
+}
+
+/* For even smaller screens */
+@media (max-width: 1300px) {
+  /* Initial positions */
+    /* Left */
+    .sticker-1 { left: 5px !important; } /* strawhat*/
+    .sticker-2 { left: 15px !important; } /* psp*/
+    .sticker-5 { left: 5px !important; }/* pokeball*/
+    .sticker-6 { left: 15px !important; } /*vscode*/
+    .sticker-9 { left: 5px !important; } /*BMO*/
+    .sticker-10 { left: 15px !important;  } /*medal*/
+    .sticker-13 { left: 5px !important;  } /*maths*/
+    .sticker-14 { left: 15px !important;  } /*tardis*/
+  
+    /* Right */
+    .sticker-3 { right: 5px !important; }/* bolt*/
+    .sticker-4 { right: 15px !important; }/* spiderman*/
+    .sticker-7 { right: 5px !important; }/*Arduino*/
+    .sticker-8 { right: 15px !important; }/*LED*/
+    .sticker-11 { right: 5px !important; }/*weights*/
+    .sticker-12 { right: 15px !important; } /*crochet*/
+    .sticker-15 { right: 5px !important; }/*longboard*/
+    .sticker-16 { right: 15px !important; } /*tree*/
+}
+/*removes stickers when too small*/
+@media (max-width: 1240px) {
   .sticker-container {
     display: none !important;
   }
