@@ -146,6 +146,34 @@
     .project-card .content {
       padding: 1rem;
     }
+    /* NEW: project metadata row & tag (pill) */
+    .project-meta {
+      display: flex;
+      align-items: center;
+      gap: 0.6rem;
+      margin-top: 0.4rem;
+      flex-wrap: wrap;
+    }
+
+    .project-tag {
+      background: var(--pill-bg);
+      color: var(--clr-light);
+      padding: 0.25rem 0.6rem;
+      border-radius: 999px;
+      font-size: 0.85rem;
+      font-weight: 600;
+      letter-spacing: 0.2px;
+      border: 1px solid rgba(255,255,255,0.04);
+    }
+
+    /* Type variations (feel free to add more) */
+    .tag-personal { background: linear-gradient(90deg, rgba(162,89,255,0.12), rgba(111,75,255,0.08)); border-color: rgba(162,89,255,0.25); color: var(--clr-accent); }
+    .tag-university { background: linear-gradient(90deg, rgba(111,75,255,0.08), rgba(255,139,212,0.06)); border-color: rgba(111,75,255,0.18); color: var(--clr-accent-2); }
+    .tag-hackathon { background: rgba(255,255,255,0.04); color: #71f4f4; border-color: rgba(89, 241, 255, 0.25); }
+    .tag-up { background: rgba(255,255,255,0.04); color: #ffd166; border-color: rgba(255,209,102,0.12); }
+    .tag-ukzn { background: rgba(255,255,255,0.04); color: #00a650; border-color: rgba(139, 255, 164, 0.12); }
+    
+    /* end of new pill feature*/
 
     .project-card button {
       background-color: var(--clr-accent);
@@ -494,6 +522,10 @@
         <img src="images/UKZN Timetable.jpg" alt="Project 1" />
         <div class="content">
           <h3>UKZN Timetable App</h3>
+          <div class="project-meta">
+            <span class="project-tag tag-personal">Personal Project</span>
+            <!-- you can add more meta items here, e.g. date, tech stack -->
+          </div>
           <button onclick="toggleDescription(this)">Show More</button>
           <p class="project-description">
             An Android application designed to automatically generate university schedules. 
@@ -508,6 +540,9 @@
         <img src="images/Escape the cinema.png" alt="Project 2" />
         <div class="content">
           <h3>Escape the Cinema</h3>
+          <div class="project-meta">
+            <span class="project-tag tag-ukzn">UKZN (Advanced Programming)</span>
+          </div>
           <button onclick="toggleDescription(this)">Show More</button>
           <p class="project-description">
           A narrative-driven trivia game created in C++ and Qt for the COMP315 Advanced Programming module. 
@@ -526,6 +561,9 @@
         <img src="images/My Fitness GPT.png" alt="Project 3" />
         <div class="content">
           <h3>My Fitness GPT</h3>
+          <div class="project-meta">
+            <span class="project-tag tag-ukzn">UKZN (Software Design)</span>
+          </div>
           <button onclick="toggleDescription(this)">Show More</button>
           <p class="project-description">
           A personalized AI fitness and nutrition assistant powered by PrivateGPT. 
@@ -540,6 +578,9 @@
         <img src="images/MARV.jpg" alt="Project 4" />
         <div class="content">
           <h3>Line following Microcontroller-based Autonomous Robotic Vehicle</h3>
+          <div class="project-meta">
+            <span class="project-tag tag-up">UP (Microprocessors)</span>
+          </div>
           <button onclick="toggleDescription(this)">Show More</button>
           <p class="project-description">
           A microcontroller-based autonomous line-following vehicle developed in assembly for the EMK310 Microprocessors course. 
@@ -553,6 +594,9 @@
         <img src="images/Cluedo.png" alt="Project 5" />
         <div class="content">
           <h3>Digital Cluedo Game</h3>
+          <div class="project-meta">
+            <span class="project-tag tag-up">UP (Software Engineering)</span>
+          </div>
           <button onclick="toggleDescription(this)">Show More</button>
           <p class="project-description">
           A local network multiplayer digital board game based on Cluedo, with optional AI opponents built using C++ and Qt 
@@ -566,6 +610,9 @@
         <img src="images/Beyblade.png" alt="Project 6" />
         <div class="content">
           <h3>PyBlade</h3>
+          <div class="project-meta">
+            <span class="project-tag tag-personal">Personal Project</span>
+          </div>
           <button onclick="toggleDescription(this)">Show More</button>
           <p class="project-description">
           A two-player arena game developed in Python using Pygame, 
@@ -587,6 +634,9 @@
         <img src="images/Coffee.png" alt="Project 7" />
         <div class="content">
           <h3>Coffee Shop Chatbot</h3>
+          <div class="project-meta">
+            <span class="project-tag tag-ukzn">UKZN (Natural Language Processing)</span>
+          </div>
           <button onclick="toggleDescription(this)">Show More</button>
           <p class="project-description">
           A rule-based chatbot developed in Python using NLP techniques for order-taking, 
@@ -601,6 +651,9 @@
         <img src="images/Kettle.jpg" alt="Project 8" />
         <div class="content">
           <h3>Kettle Clicker</h3>
+          <div class="project-meta">
+            <span class="project-tag tag-personal">Personal Project</span>
+          </div>
           <button onclick="toggleDescription(this)">Show More</button>
           <p class="project-description">
           An IoT project that controls a kettle using an ESP32 microcontroller and a servo motor, 
@@ -614,6 +667,9 @@
         <img src="images/Piano.jpg" alt="Project 9" />
         <div class="content">
           <h3>Capacitive Touch Coke Can Piano</h3>
+          <div class="project-meta">
+            <span class="project-tag tag-personal">Personal Project</span>
+          </div>
           <button onclick="toggleDescription(this)">Show More</button>
           <p class="project-description">
           A fun electronics project using aluminum cans as capacitive touch sensors connected to an Arduino. 
@@ -627,6 +683,9 @@
         <img src="images/PhishHunter.png" alt="Project 10" />
         <div class="content">
           <h3>Phish Hunter</h3>
+          <div class="project-meta">
+            <span class="project-tag tag-hackathon">Hackathon</span>
+          </div>
           <button onclick="toggleDescription(this)">Show More</button>
           <p class="project-description">
           A browser-based educational game designed to improve cybersecurity awareness. Through interactive multiple-choice challenges and
