@@ -1,452 +1,15 @@
-
 <!DOCTYPE html>
 <html lang="en">
-
+ 
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>My Portfolio</title>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700&display=swap" rel="stylesheet" />
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
-  <style>
-    :root {
-      --clr-dark: #1e1a2e;
-      --clr-deep: #2b2444;
-      --clr-accent: #a259ff;
-      --clr-light: #f5f5f5;
-    }
-
-    * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
-      font-family: 'Inter', sans-serif;
-    }
-    a:link {
-      color: var(--clr-light);
-      text-decoration: none;
-    }
-    a:visited {
-      color: var(--clr-light);
-      text-decoration: none;
-    }
-
-    a:hover {
-      color: var(--clr-accent);
-      text-decoration: underline;
-    }
-
-
-    body {
-      background-color: var(--clr-dark);
-      color: var(--clr-light);
-      line-height: 1.6;
-    }
-
-    .profile-pic {
-      position: absolute;
-      left: 2.5rem;
-      top: 50%;
-      transform: translateY(-50%);
-      width: 130px;
-      height: 130px;
-      border-radius: 50%;
-      overflow: hidden;
-      border: 2px solid var(--clr-light);
-      box-shadow: 0 0 8px var(--clr-dark);
-      transition: transform 0.3s ease;
-    }
-
-    .profile-pic:hover {
-      transform: translateY(-50%) scale(1.2);
-    }
-
-    .profile-pic img {
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-      transition: opacity 0.3s ease;
-    }
-
-    .profile-pic:hover img {
-      content: url("images/pfp-irl.jpg") /* <-- Second picture shown on hover */
-    }
-
-
-    header {
-      background-color: var(--clr-deep);
-      color: var(--clr-light);
-      padding: 2rem;
-      text-align: center;
-      position: relative; /* Needed for absolute positioning inside */
-      justify-content: center;
-      align-items: center;
-      /* display:flex; */
-    }
-
-    nav {
-      margin-top: 1rem;
-    }
-
-    nav a {
-      color: var(--clr-light);
-      margin: 0 1rem;
-      text-decoration: none;
-      font-weight: bold;
-      transition: color 0.3s ease;
-    }
-
-    nav a:hover {
-      color: var(--clr-accent);
-    }
-
-    section {
-      padding: 3rem 2rem;
-      max-width: 1000px;
-      margin: auto;
-    }
-
-    h2 {
-      color: var(--clr-accent);
-      margin-bottom: 1rem;
-    }
-
-    .about, .contact, .achievements, .hobbies {
-      background-color: var(--clr-deep);
-      padding: 2rem;
-      margin-top: 1rem;
-      margin-bottom: 1rem;
-      border-radius: 10px;
-      box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
-    }
-
-    .about{
-      margin-top: 2rem;
-    }
-
-    .projects {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-      gap: 2rem;
-    }
-
-    .project-card {
-      background: var(--clr-deep);
-      border-radius: 10px;
-      overflow: hidden;
-      box-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
-    }
-
-    .project-card img {
-      width: 100%;
-      height: 249px;
-      object-fit: cover;
-    }
-
-    .project-card .content {
-      padding: 1rem;
-    }
-    /* NEW: project metadata row & tag (pill) */
-    .project-meta {
-      display: flex;
-      align-items: center;
-      gap: 0.6rem;
-      margin-top: 0.4rem;
-      flex-wrap: wrap;
-    }
-
-    .project-tag {
-      background: var(--pill-bg);
-      color: var(--clr-light);
-      padding: 0.25rem 0.6rem;
-      border-radius: 999px;
-      font-size: 0.85rem;
-      font-weight: 600;
-      letter-spacing: 0.2px;
-      border: 1px solid rgba(255,255,255,0.04);
-    }
-
-    /* Type variations (feel free to add more) */
-    .tag-personal { background: linear-gradient(90deg, rgba(162,89,255,0.12), rgba(111,75,255,0.08)); border-color: rgba(162,89,255,0.25); color: var(--clr-accent); }
-    .tag-university { background: linear-gradient(90deg, rgba(111,75,255,0.08), rgba(255,139,212,0.06)); border-color: rgba(111,75,255,0.18); color: var(--clr-accent-2); }
-    .tag-hackathon { background: rgba(255,255,255,0.04); color: #71f4f4; border-color: rgba(89, 241, 255, 0.25); }
-    .tag-up { background: rgba(255,255,255,0.04); color: #ffd166; border-color: rgba(255,209,102,0.12); }
-    .tag-ukzn { background: rgba(255,255,255,0.04); color: #00a650; border-color: rgba(139, 255, 164, 0.12); }
-    
-    /* end of new pill feature*/
-
-    .project-card button {
-      background-color: var(--clr-accent);
-      color: white;
-      border: none;
-      padding: 0.5rem 1rem;
-      margin-top: 1rem;
-      cursor: pointer;
-      border-radius: 5px;
-    }
-
-    .project-description {
-      display: none;
-      margin-top: 1rem;
-      color: #ddd;
-    }
-
-    footer {
-      text-align: center;
-      padding: 2rem;
-      background-color: var(--clr-deep);
-      color: var(--clr-light);
-    }
-
-    .skills-section {
-      background: var(--clr-dark);
-      text-align: center;
-      padding: 1rem 2rem;
-    }
-
-    .section-header {
-      font-size: 3rem;
-      margin-bottom: 2rem;
-      padding-bottom: 1rem;
-      display: inline-block;
-      border-bottom: 0.2rem solid var(--clr-light);
-    }
-
-    .skills-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
-      gap: 2rem;
-      max-width: 1000px;
-      margin: 0 auto;
-    }
-
-    .skill-card {
-      background-color: var(--clr-deep);
-      padding: 1rem;
-      border-radius: 10px;
-      box-shadow: 0 4px 10px rgba(0,0,0,0.2);
-      transition: background-color 0.3s ease, transform 0.3s ease-in-out;
-    }
-
-    .skill-card:hover {
-      background-color: var(--clr-accent);
-      /* transform: scale(1.05); */
-    }
-
-    .skill-card:hover i,
-    .skill-card:hover h3 {
-      color: var(--clr-dark);
-      transition: color 0.3s ease;
-    }
-
-
-    .skill-card i {
-      font-size: 2rem;
-      margin-bottom: 0.5rem;
-      color: var(--clr-accent);
-      transition: color 0.3s ease;
-    }
-
-    .skill-card h3 {
-      font-size: 1rem;
-      font-weight: 400;
-      transition: color 0.3s ease;
-    }
-
-    button {
-      background-color: var(--clr-deep);
-      color: var(--clr-light);
-      padding: 0.5rem 1rem;
-      border: none;
-      border-radius: 5px;
-      cursor: pointer;
-      transition: background-color 0.3s ease;
-    }
-
-    button:hover {
-      background-color: var(--clr-accent);
-      color: #000;
-    }
-
-
-    .education-grid, .cert-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-    gap: 2rem;
-    margin-top: 2rem;
-  }
-
-  .edu-card, .cert-card {
-    background-color: var(--clr-deep);
-    padding: 1.5rem;
-    border-radius: 10px;
-    box-shadow: 0 0 12px rgba(0, 0, 0, 0.25);
-  }
-
-  .edu-card h3, .cert-card h4 {
-    color: var(--clr-accent);
-    margin-bottom: 0.8rem;
-  }
-
-  .cert-card ul {
-    padding-left: 1.2rem;
-    list-style: disc;
-    color: var(--clr-light);
-  }
-
-  .coursework-grid {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 0.5rem;
-  margin-top: 0rem;
-}
-
-.course-chip {
-  background-color: var(--clr-deepest);
-  padding: 0.3rem 0.6rem;
-  border-radius: 5px;
-  font-size: 0.85rem;
-  color: var(--clr-light);
-  box-shadow: 0 1px 3px rgba(0,0,0,0.2);
-  white-space: nowrap;
-  transition: background-color 0.3s ease;
-}
-
-.course-chip:hover {
-  background-color: var(--clr-accent);
-  color: #000;
-}
-.profile-wrapper {
-  position: relative;
-}
-
-/* For mobile view - removes stickers */
-@media (max-width: 768px) {
-  .profile-pic {
-    position: static;
-    transform: none;
-    margin: 0 auto 1rem auto;
-    display: block;
-  }
-
-  .profile-wrapper {
-    display: flex;
-    justify-content: center;
-    margin-bottom: 1rem;
-  }
-  .profile-pic:hover {
-    transform: scale(1.2); /* No translateY */
-  }
-
-  .sticker-container {
-    display: none !important;
-  }
-}
-
-/* For slighly smaller screens */
-@media (max-width: 1400px) {
-  /* Initial positions */
-    /* Left */
-    .sticker-1 { left: 15px !important; } /* strawhat*/
-    .sticker-2 { left: 45px !important; } /* psp*/
-    .sticker-5 { left: 15px !important; }/* pokeball*/
-    .sticker-6 { left: 45px !important; } /*vscode*/
-    .sticker-9 { left: 15px !important; } /*BMO*/
-    .sticker-10 { left: 45px !important;  } /*medal*/
-    .sticker-13 { left: 15px !important;  } /*maths*/
-    .sticker-14 { left: 45px !important;  } /*tardis*/
-  
-    /* Right */
-    .sticker-3 { right: 15px !important; }/* bolt*/
-    .sticker-4 { right: 45px !important; }/* spiderman*/
-    .sticker-7 { right: 15px !important; }/*Arduino*/
-    .sticker-8 { right: 45px !important; }/*LED*/
-    .sticker-11 { right: 15px !important; }/*weights*/
-    .sticker-12 { right: 45px !important; } /*crochet*/
-    .sticker-15 { right: 15px !important; }/*longboard*/
-    .sticker-16 { right: 45px !important; } /*tree*/
-}
-
-/* For even smaller screens */
-@media (max-width: 1300px) {
-  /* Initial positions */
-    /* Left */
-    .sticker-1 { left: 5px !important; } /* strawhat*/
-    .sticker-2 { left: 15px !important; } /* psp*/
-    .sticker-5 { left: 5px !important; }/* pokeball*/
-    .sticker-6 { left: 15px !important; } /*vscode*/
-    .sticker-9 { left: 5px !important; } /*BMO*/
-    .sticker-10 { left: 15px !important;  } /*medal*/
-    .sticker-13 { left: 5px !important;  } /*maths*/
-    .sticker-14 { left: 15px !important;  } /*tardis*/
-  
-    /* Right */
-    .sticker-3 { right: 5px !important; }/* bolt*/
-    .sticker-4 { right: 15px !important; }/* spiderman*/
-    .sticker-7 { right: 5px !important; }/*Arduino*/
-    .sticker-8 { right: 15px !important; }/*LED*/
-    .sticker-11 { right: 5px !important; }/*weights*/
-    .sticker-12 { right: 15px !important; } /*crochet*/
-    .sticker-15 { right: 5px !important; }/*longboard*/
-    .sticker-16 { right: 15px !important; } /*tree*/
-}
-
-/*removes stickers when too small*/
-@media (max-width: 1240px) {
-  .sticker-container {
-    display: none !important;
-  }
-}
-
-#page-wrapper {
-  position: relative;
-  z-index: 1;
-  padding-bottom: 100px;
-}
-  .sticker-container {
-      position: absolute;
-      width: 120px;
-      height: 120px;
-      z-index: 10;
-      cursor: grab;
-      /* user-select: none;
-      transition: transform 0.1s ease; */
-  }
-
-    .sticker-container img {
-      width: 100%;
-      height: 100%;
-      pointer-events: none;
-    }
-
-    .sticker-container:active {
-      cursor: grabbing;
-      /* transform: scale(1.05); */
-    }
-
-    /* Initial positions */
-    /* Left */
-    .sticker-1 { top: 200px; left: 30px; } /* strawhat*/
-    .sticker-2 { top: 400px; left: 90px; } /* psp*/
-    .sticker-5 { top: 600px; left: 30px; }/* pokeball*/
-    .sticker-6 { top: 1300px; left: 90px; } /*vscode*/
-    .sticker-9 { top: 2000px; left: 30px; } /*BMO*/
-    .sticker-10 { top: 3510px; left: 90px; } /*medal*/
-    .sticker-13 { top: 4100px; left: 30px; } /*maths*/
-    .sticker-14 { top: 5260px; left: 90px; } /*tardis*/
-  
-    /* Right */
-    .sticker-3 { top: 300px; right: 30px; }/* bolt*/
-    .sticker-4 { top: 500px; right: 90px; }/* spiderman*/
-    .sticker-7 { top: 1000px; right: 30px; }/*Arduino*/
-    .sticker-8 { top: 2200px; right: 90px; }/*LED*/
-    .sticker-11 { top: 3600px; right: 30px; }/*weights*/
-    .sticker-12 { top: 3800px; right: 90px; } /*crochet*/
-    .sticker-15 { top: 4300px; right: 30px; }/*longboard*/
-    .sticker-16 { top: 4800px; right: 90px; } /*tree*/
-  </style>
+  <link rel="stylesheet" href="styles.css" />
 </head>
-
+ 
 <body>
   
   <header>
@@ -455,15 +18,16 @@
         <img src="images/pfp.jpg" alt="Profile Picture" />
       </div>
     </div>
-
+ 
     <h1>Jashvin Pandoo</h1>
-    <p>Final Year Computer Science Student | Aspiring Software Engineer</p>
+    <p>Software Engineer @ Entelect | Johannesburg, SA</p>
     <nav>
       <a href="#about">About</a>
+      <a href="#hobbies">Hobbies</a>
+      <a href="#achievements">Achievements</a>
+      <a href="#work">Work</a>
       <a href="#skills">Skills</a>
       <a href="#projects">Projects</a>
-      <a href="#achievements">Achievements</a>
-      <a href="#hobbies">Hobbies</a>
       <a href="#education">Education</a>
       <a href="#contact">Contact</a>
     </nav>
@@ -475,20 +39,69 @@
       <!-- I'm a passionate computer science student with a love for problem-solving,
       building applications, and continuous learning and self improvement. I'm currently finishing my
       degree at UKZN and working on various coding, robotics, and creative projects. -->
-      I'm a passionate Computer Science student with a background in Computer Engineering, currently completing my degree at UKZN. 
+      I'm a passionate Software Engineer at Entelect with a background spanning Computer Engineering and Computer Science. 
       I love solving problems, building meaningful (and sometimes just fun) projects, and constantly learning new skills. 
       With experience in both low-level systems and high-level design, I've worked on everything from microcontroller robots to AI-powered assistants and my own Android app.
     </p>
     <br>
     <p>
-      I thrive in positive, collaborative environments and have recently been trying to take the lead more often when coordinating teams. Whether it's building trivia games, 
+      I thrive in positive, collaborative environments and enjoy stepping up to lead when coordinating teams. Whether it's building trivia games, 
       automating timetables, or hacking together hardware projects, I enjoy bringing ideas to life with clean code and thoughtful design. 
-      I believe having a well-rounded life sharpens creative problem-solving - doing a variety of things outside university work has helped 
+      I believe having a well-rounded life sharpens creative problem-solving — pursuing a variety of interests helps 
       me approach challenges with broader perspectives and more adaptable thinking.
-
+ 
   </p>
   </section>
+ 
+  <section id="hobbies" class="hobbies">
+  <h2>Hobbies & Interests</h2>
+  <p>
+        Outside of work, I’m someone who stays active and creative. I enjoy hiking, gym, crocheting, longboarding, cooking and reading. I’ve also dabbled in making short films, and I love robotics and 
+        tech side-projects that mix creativity with engineering. I believe that these passions not only keep life exciting but also fuel 
+        my innovation and resilience in tech and problem solving.
+  </p>
+</section>
 
+    <section id="achievements" class="achievements">
+    <h2>Achievements</h2>
+    <ul>
+      <li>Founder and Head of Tuks Anime Society (2023) - Largest Society at the University of Pretoria with near 700 members</li>
+      <li>Completed my first full 42.2Km Marathon (2025)</li>
+      <li>200+ Leetcode Submissions</li>
+      <li>Participated in Numerous Hackathons - Placed 11/184 in the April 2025 Entelect Challenge University Cup</li>
+      <li>Head of of High School Newspaper</li>
+    </ul>
+  </section>
+ 
+  <section id="work" class="about">
+    <h2>Work Experience</h2>
+    <div class="work-timeline">
+ 
+      <div class="work-card">
+        <div class="work-header">
+          <div>
+            <h3 class="work-company">Entelect</h3>
+            <p class="work-role">Software Engineer</p>
+          </div>
+          <div class="work-meta">
+            <span class="work-location"><i class="fas fa-map-marker-alt"></i> Johannesburg, SA</span>
+            <span class="work-period"><i class="far fa-calendar-alt"></i> 2026 – Present</span>
+          </div>
+        </div>
+        <div class="work-placement">
+          <span class="placement-label">Current Placement</span>
+          <div class="placement-card">
+            <div class="placement-info">
+              <strong>Standard Bank – BOL+ Team</strong>
+              <p>Placed at Standard Bank working on the Business Online Plus (BOL+) platform — Standard Bank's flagship digital banking solution for business clients. Contributing to feature development, maintenance, and improvement of the platform in a professional enterprise environment.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+ 
+    </div>
+  </section>
+  
   <section id="skills" class="skills-section">
     <h2 class="section-header">My Toolbox</h2>
     <div class="skills-grid">
@@ -514,7 +127,7 @@
       <div class="skill-card"><i class="fa-solid fa-cube"></i><h3>3D Printing Design</h3></div>
     </div>
   </section>
-
+ 
   <section id="projects">
     <h2>Projects</h2>
     <div class="projects">
@@ -535,7 +148,7 @@
           </p>
         </div>
       </div>
-
+ 
       <div class="project-card">
         <img src="images/Escape the cinema.png" alt="Project 2" />
         <div class="content">
@@ -556,7 +169,7 @@
           </p>
         </div>
       </div>
-
+ 
       <div class="project-card">
         <img src="images/My Fitness GPT.png" alt="Project 3" />
         <div class="content">
@@ -573,7 +186,7 @@
           </p>
         </div>
       </div>
-
+ 
       <div class="project-card">
         <img src="images/MARV.jpg" alt="Project 4" />
         <div class="content">
@@ -589,7 +202,7 @@
           </p>
         </div>
       </div>
-
+ 
       <div class="project-card">
         <img src="images/Cluedo.png" alt="Project 5" />
         <div class="content">
@@ -605,7 +218,7 @@
           </p>
         </div>
       </div>
-
+ 
       <div class="project-card">
         <img src="images/Beyblade.png" alt="Project 6" />
         <div class="content">
@@ -629,7 +242,7 @@
           </p>
         </div>
       </div>
-
+ 
       <div class="project-card">
         <img src="images/Coffee.png" alt="Project 7" />
         <div class="content">
@@ -646,7 +259,7 @@
           </p>
         </div>
       </div>
-
+ 
       <div class="project-card">
         <img src="images/Kettle.jpg" alt="Project 8" />
         <div class="content">
@@ -662,7 +275,7 @@
         </p>
         </div>
       </div>
-
+ 
       <div class="project-card">
         <img src="images/Piano.jpg" alt="Project 9" />
         <div class="content">
@@ -678,7 +291,7 @@
           </p>
         </div>
         </div>
-
+ 
       <div class="project-card">
         <img src="images/PhishHunter.png" alt="Project 10" />
         <div class="content">
@@ -694,40 +307,41 @@
           to the next section. Built in 24Hrs as a part of the South African Invervarcity Hackathon 2025</p>
         </div>
       </div>
-
+ 
+      <div class="project-card">
+        <img src="images/maze.png" alt="Escape from Alpha 9" />
+        <div class="content">
+          <h3>Escape from Alpha 9</h3>
+          <div class="project-meta">
+            <span class="project-tag tag-up">UP (Graphics &amp; Modelling)</span>
+          </div>
+          <button onclick="toggleDescription(this)">Show More</button>
+          <p class="project-description">
+            An arcade-style 3D maze game developed in Unity for the COMP307 Graphics and Modelling module. 
+            Built as a group project, the premise has the player abducted by aliens and stranded aboard an alien spaceship — 
+            you must either find the hidden key and escape, or hunt down a ray gun and eliminate every alien to seize control of the ship. 
+            Every asset in the game, from the spaceship corridors to the alien characters, was hand-modelled by the team in Blender, 
+            giving the project a fully original aesthetic from top to bottom.
+          </p>
+        </div>
+      </div>
+ 
     </div>
   </section>
-
-  <section id="achievements" class="achievements">
-    <h2>Achievements</h2>
-    <ul>
-      <li>Founder and Head of Tuks Anime Society (2023) - Largest Society at the University of Pretoria with near 700 members</li>
-      <li>Completed my first full 42.2Km Marathon (2025)</li>
-      <li>200+ Leetcode Submissions</li>
-      <li>Participated in Numerous Hackathons - Placed 11/184 in the April 2025 Entelect Challenge University Cup</li>
-      <li>Head of of High School Newspaper</li>
-    </ul>
-  </section>
-
-  <section id="hobbies" class="hobbies">
-    <h2>Hobbies & Interests</h2>
-    <p>
-      <!-- Outside of university, I enjoy hiking, gym, crocheting, longboarding, cooking, reading, robotics, and creating short films. I believe a well-rounded life helps fuel creativity and resilience. -->
-          Outside of university, I’m someone who stays active and creative. I enjoy hiking, gym, crocheting, longboarding, cooking and reading. I’ve also dabbled in making short films, and I love robotics and 
-          tech side-projects that mix creativity with engineering. I believe that these passions not only keep life exciting but also fuel 
-          my innovation and resilience in tech and problem solving.
-    </p>
-  </section>
-
+ 
   <section id="education" class="about">
   <h2>Academic History</h2>
   <h3 style="margin-top: 2rem;">University</h3>
   <div class="education-grid">
     <div class="edu-card">
-      <h3>University of Pretoria</h3>
-      <p><strong>Location:</strong> Pretoria, SA</p>
-      <p><strong>Duration:</strong> Jan 2020 – Dec 2023</p>
-      <p><strong>Degree:</strong> BEng Computer Engineering</p>
+      <div class="edu-header">
+        <h3>University of Pretoria</h3>
+        <div class="edu-meta">
+          <span><i class="fas fa-map-marker-alt"></i> Pretoria, SA</span>
+          <span><i class="far fa-calendar-alt"></i> Jan 2020 – Dec 2023</span>
+          <span><i class="fas fa-graduation-cap"></i> BEng Computer Engineering</span>
+        </div>
+      </div>
       <div class="coursework-grid">
         <p><strong>Coursework:</strong></p>
         <div class="course-chip">Program Design</div>
@@ -746,10 +360,14 @@
       </div>
     </div>
     <div class="edu-card">
-      <h3>University of KwaZulu-Natal</h3>
-      <p><strong>Location:</strong> Pietermaritzburg, SA</p>
-      <p><strong>Duration:</strong> Jan 2024 – Dec 2025</p>
-      <p><strong>Degree:</strong> BSc Computer Science & IT</p>
+      <div class="edu-header">
+        <h3>University of KwaZulu-Natal</h3>
+        <div class="edu-meta">
+          <span><i class="fas fa-map-marker-alt"></i> Pietermaritzburg, SA</span>
+          <span><i class="far fa-calendar-alt"></i> Jan 2024 – Dec 2025</span>
+          <span><i class="fas fa-graduation-cap"></i> BSc Computer Science &amp; IT</span>
+        </div>
+      </div>
       <div class="coursework-grid">
         <p><strong>Coursework:</strong></p>
         <div class="course-chip">Cryptography</div>
@@ -758,10 +376,12 @@
         <div class="course-chip">Natural Language Processing</div>
         <div class="course-chip">Database Systems</div>
         <div class="course-chip">Operating Systems</div>
+        <div class="course-chip">Theory of Computation</div>
+        <div class="course-chip">Graphics and Modelling</div>
       </div>
     </div>
   </div>
-
+ 
   <h3 style="margin-top: 2rem;">Certificates</h3>
   <div class="cert-grid">
     <div class="cert-card">
@@ -796,19 +416,18 @@
     </div>
   </div>
 </section>
-
-
+ 
+ 
   <section id="contact" class="contact">
     <h2>Contact</h2>
-    <p>Email: jashpandoo@gmail.com</p>
     <p> LinkedIn: <a href="https://www.linkedin.com/in/jashpandoo/">linkedin.com/in/jashpandoo/</a> </p>
     <p> GitHub: <a href="https://github.com/JashPandoo">github.com/u/jashpandoo</a> </p>
     <p> Leetcode: <a href="https://leetcode.com/u/jashpandoo/">leetcode.com/u/jashpandoo</a> </p>
     <p> Itch.io: <a href="https://jashpandoo.itch.io/">jashpandoo.itch.io</a> </p>
   </section>
-
+ 
   <footer>
-    <p>&copy; 2025 Jashvin Pandoo. All rights reserved.</p>
+    <p>&copy; 2026 Jashvin Pandoo. All rights reserved.</p>
   </footer>
  </div>
   <!-- Stickers on left -->
@@ -836,7 +455,7 @@
   <div class="sticker-container sticker-14">
     <img src="images/stickers/tardis.png" alt="Sticker 14">
   </div>
-
+ 
   <!-- Stickers on right -->
   <div class="sticker-container sticker-3">
     <img src="images/stickers/bolt.png" alt="Sticker 3">
